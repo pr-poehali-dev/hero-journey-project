@@ -3,25 +3,25 @@ import { useState, useEffect, useRef } from "react"
 import { useUIStore } from "@/lib/ui-store"
 import { Button } from "@/components/ui/button"
 
-const QUICK_CHIPS = ["Кто ты?", "Покажи арт", "Над чем работаешь?"]
+const QUICK_CHIPS = ["Наша история", "Семейные фото", "Традиции"]
 
 const RESPONSES: Record<string, string> = {
-  "Кто ты?": "Я AI-помощник Алекса! Помогаю показать работы и рассказать о нем. Хочешь узнать больше?",
-  "Покажи арт":
-    "С удовольствием покажу работы Алекса! В них сочетаются цифровые и традиционные техники.",
-  "Над чем работаешь?":
-    "Сейчас в работе несколько проектов! Алекс занимается AI-приложениями и креативным кодингом.",
+  "Наша история": "Добро пожаловать в семейный архив! Здесь собраны воспоминания, истории и традиции нашей семьи.",
+  "Семейные фото":
+    "С удовольствием покажу семейные фотографии! Здесь собраны снимки разных лет и поколений.",
+  "Традиции":
+    "У нашей семьи много традиций, которые мы бережно храним и передаём из поколения в поколение.",
 }
 
 const ACTION_RESPONSES: Record<string, { response: string; action: string }> = {
-  "открой арт": { response: "Открываю галерею!", action: "art" },
-  "покажи арт": { response: "Открываю раздел с артом!", action: "art" },
-  "открой резюме": { response: "Открываю резюме!", action: "resume" },
-  "покажи резюме": { response: "Вот резюме!", action: "resume" },
-  "открой обо мне": { response: "Открываю раздел обо мне!", action: "about" },
-  "покажи обо мне": { response: "Расскажу об Алексе!", action: "about" },
-  "открой статьи": { response: "Открываю статьи!", action: "writings" },
-  "покажи статьи": { response: "Вот статьи!", action: "writings" },
+  "открой фото": { response: "Открываю фотоархив!", action: "art" },
+  "покажи фото": { response: "Открываю семейные фото!", action: "art" },
+  "открой родословную": { response: "Открываю семейное древо!", action: "resume" },
+  "покажи родословную": { response: "Вот наше семейное древо!", action: "resume" },
+  "открой историю": { response: "Открываю историю семьи!", action: "about" },
+  "покажи историю": { response: "Расскажу нашу историю!", action: "about" },
+  "открой традиции": { response: "Открываю семейные традиции!", action: "writings" },
+  "покажи традиции": { response: "Вот наши традиции!", action: "writings" },
 }
 
 type AppType = "about" | "resume" | "writings" | "art"
@@ -62,7 +62,7 @@ export function ChatPanel() {
     } else {
       // Default response for non-action messages
       const defaultResponse =
-        "Интересно! Я помогу изучить работы Алекса. Попробуй написать «открой арт» или «покажи резюме»!"
+        "Интересно! Попробуй написать «покажи фото», «открой родословную» или «покажи традиции»!"
       setMessages((prev) => [...prev, { text: userMessage, isUser: true }, { text: defaultResponse, isUser: false }])
     }
   }
